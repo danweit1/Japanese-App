@@ -1,0 +1,20 @@
+[
+    {
+        "character": "日",
+        "onyomi": "ニチ",
+        "kunyomi": "ひ",
+        "jlpt_level": 5,
+        "strokes": 4,
+        "meaning": "Sun, day",
+        "common_words": "日本,日曜日"
+    },
+    {
+        "character": "月",
+        "onyomi": "ゲツ",
+        "kunyomi": "つき",
+        "jlpt_level": 5,
+        "strokes": 4,
+        "meaning": "Moon, month",
+        "common_words": "月曜日,満月"
+    }
+]
