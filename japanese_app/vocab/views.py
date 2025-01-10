@@ -1,9 +1,14 @@
 from django.http import JsonResponse
 from django.views import View
-from .models import Grammar
+from .models import Vocab
 
-class GrammarListView(View):
+class VocabListView(View):
     def get(self, request):
-        grammar = Grammar.objects.all()
-        data = [{"grammar_point": g.grammar_point, "meaning": g.meaning, "jlpt_level": g.jlpt_level} for g in grammar]
+        jlpt_level = request.GET.get('jlpt_level')
+        if jlpt_level:
+            vocab = Vocab.objects.filter(jlpt_level=jlpt_level)
+        else:
+            vocab = Vocab.objects.all()
+
+        data = [{"original": v.original, "furigana": v.furigana, "meaning": v.meaning, "jlpt_level": v.jlpt_level} for v in vocab]
         return JsonResponse(data, safe=False)

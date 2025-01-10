@@ -18,13 +18,17 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from kanji_app.views import KanjiListView
+from grammar.views import GrammarListView
+from vocab.views import VocabListView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include('kanji_app.urls')),  # Add this line
-    path('grammar/', include('grammar.urls')),
-    path('vocab/', include('vocab.urls')),
+    path('api/kanji/', KanjiListView.as_view(), name='kanji_list'),
+    path('api/grammar/', GrammarListView.as_view(), name='grammar_list'),
+    path('api/vocab/', VocabListView.as_view(), name='vocab_list'),
 
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
