@@ -1,10 +1,12 @@
-from rest_framework import viewsets
-from django_filters.rest_framework import DjangoFilterBackend
+from django.http import JsonResponse
+from django.views import View
 from .models import Kanji
-from .serializers import KanjiSerializer
 
-class KanjiViewSet(viewsets.ModelViewSet):
-    queryset = Kanji.objects.all()
-    serializer_class = KanjiSerializer
-    filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['jlpt_level', 'strokes', 'character']
+class KanjiListView(View):
+    """
+    Handles GET requests to return a list of all Kanji.
+    """
+    def get(self, request):
+        kanji = Kanji.objects.all()
+        data = [{"character": k.character, "meaning": k.meaning, "jlpt_level": k.jlpt_level} for k in kanji]
+        return JsonResponse(data, safe=False)

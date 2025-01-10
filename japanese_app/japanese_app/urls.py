@@ -22,6 +22,9 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('kanji_app.urls')),  # Add this line
+    path('grammar/', include('grammar.urls')),
+    path('vocab/', include('vocab.urls')),
+
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

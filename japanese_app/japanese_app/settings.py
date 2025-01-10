@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'kanji_app',
     'rest_framework',
     'django_filters',
+    'vocab',
+    'grammar',
 ]
 
 
